@@ -8,145 +8,135 @@
 }*/
 
 .container {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-  }
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.attribution {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 1em;
+}
+
+.attribution h1 {
+  margin: 0 0 0.25em;
+}
+
+.attribution img {
+  opacity: 0.5;
+  height: 2em;
+}
+
+.attribution .cc {
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: auto;
+  text-align: center;
+  font-style: italic;
+  line-height: 1.5em;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 0.5vh;
+}
+
+.column {
+  display: table-cell;
+  flex-direction: column;
+  /* vertical-align: middle; */
+  /* width: 25%; */
+  padding-right: 10px;
+  width: 24%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  /* clear: both; */
+}
+
+.block {
+  display: block;
+  width: 25%;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 28px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.block:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.header {
+  font-size: 2vw;
+  text-align: center;
+}
+
+.header-input {
+  /* width: 280px; */
+  width: 100%;
+}
+
+.header-result {
+  /* width: 280px; */
+  width: 100%;
+}
+
+.input-img {
+  width: 100%;
+}
 
 
-  #card {
-    display: flex;
-    /* flex-direction: column; */
-    /* width: 600px; */
-    /*border-radius: 6px;*/
-    /*box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);*/
-    overflow: hidden;
-    border: 2px rgb(0, 0, 0) solid;
-    width: 100%;
-    height: 98%;
-  }
+span.blueText {
+  color: #6196C9;
+  font-weight: bold;
+}
 
-  model-viewer {
-    width: 100%;
-    height: auto;
-    /* background-color: rgba(255, 255, 255, 0.856); */
-    /* background-color: rgba(180, 180, 180, 0.507); */
-    background-color: #f2f2f2;
-  }
+span.redText {
+  color: #e6729a;
+  font-weight: bold;
+}
 
-  .attribution {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 1em;
-  }
+/* for interactive results */
+#card {
+  display: flex;
+  flex-direction: column;  
+  /* width: 600px; */
+  /*border-radius: 6px;*/
+  /*box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);*/
+  overflow: hidden;
+  border: 2px rgb(0, 0, 0) solid;
+  width: 100%;
+  height: 98%;
+}
 
-  .attribution h1 {
-    margin: 0 0 0.25em;
-  }
+model-viewer {
+  width: 100%;
+  height: calc(19.2vw * 3 / 4);;
+  background-color: #f2f2f2;
+}
 
-  .attribution img {
-    opacity: 0.5;
-    height: 2em;
-  }
-
-  .attribution .cc {
-    flex-shrink: 0;
-    text-decoration: none;
-  }
-
-  footer {
-    display: flex;
-    flex-direction: column;
-    max-width: 600px;
-    margin: auto;
-    text-align: center;
-    font-style: italic;
-    line-height: 1.5em;
-  }
-
-  .row {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 0.5vh;
-  }
-
-  .column {
-    display: table-cell;
-    flex-direction: column;
-    /* vertical-align: middle; */
-    /* width: 25%; */
-    padding-right: 10px;
-    width: 24%;
-  }
-
-  /* Clear floats after the columns */
-  .row:after {
-    content: "";
-    display: table;
-    /* clear: both; */
-  }
-  .block {
-      display: block;
-      width: 25%;
-      border: none;
-      background-color: #4CAF50;
-      color: white;
-      padding: 14px 28px;
-      font-size: 24px;
-      cursor: pointer;
-      text-align: center;
-  }
-
-  .block:hover {
-        background-color: #ddd;
-          color: black;
-  }
-
-  /*table, th, td {
-    border: 1px solid black;
-    font-size: 24px;
-  }*/
-
-  .header {
-    font-size: 2vw;
-    text-align: center;
-  }
-
-  .header-input {
-    /* width: 280px; */
-    width: 100%;
-  }
-
-  .header-result {
-    /* width: 280px; */
-    width: 100%;
-  }
-
-  .input-img {
-    /*height: 120px;
-    width: 160px;
-    max-width: 320px;
-    width: 100%;*/
-    /* width: 280px; */
-    width:100%;
-  }
-
-  .view1 {
-    border:4px solid #8cc2e8;
-  }
+.view1 {
+  border:4px solid #8cc2e8;
+}
 
 
-  .view2 {
-    border:4px solid #e6729a;
-  }
-
-  span.blueText {
-    color: #6196C9;
-    font-weight: bold;
-  }
-
-  span.redText {
-    color: #e6729a;
-    font-weight: bold;
-  }
+.view2 {
+  border:4px solid #e6729a;
+}

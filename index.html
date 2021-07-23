@@ -11,20 +11,6 @@
     <link rel="stylesheet" href="website.css">
     <!-- model-viewer css -->
     <link rel="stylesheet" href="demo-styles.css">
-    <!-- The following libraries and polyfills are recommended to maximize browser support -->
-    <!-- NOTE: you must adjust the paths as appropriate for your project -->
-    <!-- 🚨 REQUIRED: Web Components polyfill to support Edge and Firefox < 63 -->
-    <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.1.3/webcomponents-loader.js"></script>
-    <!-- 💁 OPTIONAL: Intersection Observer polyfill for better performance in Safari and IE11 -->
-    <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
-    <!-- 💁 OPTIONAL: Resize Observer polyfill improves resize behavior in non-Chrome browsers -->
-    <script src="https://unpkg.com/resize-observer-polyfill@1.5.0/dist/ResizeObserver.js"></script>
-    <!-- 💁 OPTIONAL: Fullscreen polyfill is needed to fully support AR features -->
-    <script src="https://unpkg.com/fullscreen-polyfill@1.0.2/dist/fullscreen.polyfill.js"></script>
-    <!-- 💁 OPTIONAL: Include prismatic.js for Magic Leap support -->
-    <script src="https://unpkg.com/@magicleap/prismatic/prismatic.min.js"></script>
-    <!-- 💁 OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
-    <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
   </head>
   <body>
     <br>
@@ -62,7 +48,7 @@
         <td align=center>
           <center>
             <span style="font-size:20px">University of Michigan</span> <br><br>
-            <span style="font-size:20px">ICCV 2021</span>
+            <span style="font-size:20px">ICCV 2021 (<span style="color:#a00"><b>Oral</b></span>)</span>
           </center>
         </td>
       </tr>
@@ -132,342 +118,340 @@
       <iframe style="width: 50%; height:40%; min-width:300px" src="https://www.youtube.com/embed/frrDpV6O1Io" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </p>
   </div>
-    <br><br>
-    <hr>
-    <!-- <table align=center width=550px> -->
-    <table align=center width=100%>
+
+  <table align=center width=100%>
+    <center>
+      <h1>Interactive Results</h1>
+    </center>
+    <tr>
       <center>
-        <h1>Interactive Results</h1>
-      </center>
-      <tr>
-        <center>
-          <div class='container'>
-            <div class ='row' >
-              <div class ='column'>
-                <div class='header header-input'>View A</div>
-              </div>
-              <div class ='column'>
-                <div class='header header-input'>View B</div>
-              </div>
-              <div class ='column'>
-                <div class='header header-result'>Ours</div>
-              </div>
-              <div class ='column'>
-                <div class='header header-result'>Ground Truth</div>
+        <div class='container'>
+          <div class ='row' >
+            <div class ='column'>
+              <div class='header header-input'>View A</div>
+            </div>
+            <div class ='column'>
+              <div class='header header-input'>View B</div>
+            </div>
+            <div class ='column'>
+              <div class='header header-result'>Ours</div>
+            </div>
+            <div class ='column'>
+              <div class='header header-result'>Ground Truth</div>
+            </div>
+          </div>
+          <div class ='row' >
+            <div class ='column'>
+              <a href='examples/4564/1.jpg'><img class='input-img view1' src='examples/4564/1.jpg'></img></a>
+            </div>
+            <div class ='column'>
+              <a href='examples/4564/2.jpg'><img class='input-img view2' src='examples/4564/2.jpg'></img></a>
+            </div>
+            <div class ='column'>
+              <div id="card">
+                <!-- All you need to put beautiful, interactive 3D content on your site: -->
+                <model-viewer src="examples/4564/pred.glb"
+                shadow-intensity="1"
+                camera-controls
+                camera-orbit="0deg 75deg 70%"
+                exposure="0.7"
+                >
+                </model-viewer>
               </div>
             </div>
-            <div class ='row' >
-              <div class ='column'>
-                <a href='examples/4564/1.jpg'><img class='input-img view1' src='examples/4564/1.jpg'></img></a>
-              </div>
-              <div class ='column'>
-                <a href='examples/4564/2.jpg'><img class='input-img view2' src='examples/4564/2.jpg'></img></a>
-              </div>
-              <div class ='column'>
-                <div id="card">
-                  <!-- All you need to put beautiful, interactive 3D content on your site: -->
-                  <model-viewer src="examples/4564/pred.glb"
-                  shadow-intensity="1"
-                  camera-controls
-                  camera-orbit="0deg 75deg 70%"
-                  exposure="0.7"
-                  background-color: rgb(197, 4, 4);
-                  >
-                  </model-viewer>
-                </div>
-              </div>
-              <div class ='column'>
-                <div id="card">
-                  <!-- All you need to put beautiful, interactive 3D content on your site: -->
-                  <model-viewer src="examples/4564/gt.glb"
-                  shadow-intensity="1"
-                  camera-controls
-                  camera-orbit="0deg 75deg 70%"
-                  exposure="0.7"
-                  background-color: rgb(197, 4, 4);
-                  >
-                  </model-viewer>
-                </div>
-              </div>
-            </div>
-            <div class ='row' >
-              <div class ='column'>
-                <a href='examples/1079/1.jpg'><img class='input-img view1' src='examples/1079/1.jpg'></img></a>
-              </div>
-              <div class ='column'>
-                <a href='examples/1079/2.jpg'><img class='input-img view2' src='examples/1079/2.jpg'></img></a>
-              </div>
-              <div class ='column'>
-                <div id="card">
-                  <!-- All you need to put beautiful, interactive 3D content on your site: -->
-                  <model-viewer src="examples/1079/pred.glb"
-                  shadow-intensity="1"
-                  camera-controls
-                  camera-orbit="0deg 75deg 70%"
-                  exposure="0.7"
-                  background-color: rgb(197, 4, 4);
-                  >
-                  </model-viewer>
-                </div>
-              </div>
-              <div class ='column'>
-                <div id="card">
-                  <!-- All you need to put beautiful, interactive 3D content on your site: -->
-                  <model-viewer src="examples/1079/gt.glb"
-                  shadow-intensity="1"
-                  camera-controls
-                  camera-orbit="0deg 75deg 70%"
-                  exposure="0.7"
-                  background-color: rgb(197, 4, 4);
-                  >
-                  </model-viewer>
-                </div>
-              </div>
-            </div>
-            <div class ='row' >
-              <div class ='column'>
-                <a href='examples/1419/1.jpg'><img class='input-img view1' src='examples/1419/1.jpg'></img></a>
-              </div>
-              <div class ='column'>
-                <a href='examples/1419/2.jpg'><img class='input-img view2' src='examples/1419/2.jpg'></img></a>
-              </div>
-              <div class ='column'>
-                <div id="card">
-                  <!-- All you need to put beautiful, interactive 3D content on your site: -->
-                  <model-viewer src="examples/1419/pred.glb"
-                  shadow-intensity="1"
-                  camera-controls
-                  camera-orbit="0deg 75deg 70%"
-                  exposure="0.7"
-                  background-color: rgb(197, 4, 4);
-                  >
-                  </model-viewer>
-                </div>
-              </div>
-              <div class ='column'>
-                <div id="card">
-                  <!-- All you need to put beautiful, interactive 3D content on your site: -->
-                  <model-viewer src="examples/1419/gt.glb"
-                  shadow-intensity="1"
-                  camera-controls
-                  camera-orbit="0deg 75deg 70%"
-                  exposure="0.7"
-                  background-color: rgb(197, 4, 4);
-                  >
-                  </model-viewer>
-                </div>
-              </div>
-            </div>
-            <div class ='row' >
-              <div class ='column'>
-                <a href='examples/2612/1.jpg'><img class='input-img view1' src='examples/2612/1.jpg'></img></a>
-              </div>
-              <div class ='column'>
-                <a href='examples/2612/2.jpg'><img class='input-img view2' src='examples/2612/2.jpg'></img></a>
-              </div>
-              <div class ='column'>
-                <div id="card">
-                  <!-- All you need to put beautiful, interactive 3D content on your site: -->
-                  <model-viewer src="examples/2612/pred.glb"
-                  shadow-intensity="1"
-                  camera-controls
-                  camera-orbit="0deg 75deg 70%"
-                  exposure="0.7"
-                  background-color: rgb(197, 4, 4);
-                  >
-                  </model-viewer>
-                </div>
-              </div>
-              <div class ='column'>
-                <div id="card">
-                  <!-- All you need to put beautiful, interactive 3D content on your site: -->
-                  <model-viewer src="examples/2612/gt.glb"
-                  shadow-intensity="1"
-                  camera-controls
-                  camera-orbit="0deg 75deg 70%"
-                  exposure="0.7"
-                  background-color: rgb(197, 4, 4);
-                  >
-                  </model-viewer>
-                </div>
-              </div>
-            </div>
-            <div class ='row' >
-              <div class ='column'>
-                <a href='examples/4194/1.jpg'><img class='input-img view1' src='examples/4194/1.jpg'></img></a>
-              </div>
-              <div class ='column'>
-                <a href='examples/4194/2.jpg'><img class='input-img view2' src='examples/4194/2.jpg'></img></a>
-              </div>
-              <div class ='column'>
-                <div id="card">
-                  <!-- All you need to put beautiful, interactive 3D content on your site: -->
-                  <model-viewer src="examples/4194/pred.glb"
-                  shadow-intensity="1"
-                  camera-controls
-                  camera-orbit="0deg 75deg 70%"
-                  exposure="0.7"
-                  background-color: rgb(197, 4, 4);
-                  >
-                  </model-viewer>
-                </div>
-              </div>
-              <div class ='column'>
-                <div id="card">
-                  <!-- All you need to put beautiful, interactive 3D content on your site: -->
-                  <model-viewer src="examples/4194/gt.glb"
-                  shadow-intensity="1"
-                  camera-controls
-                  camera-orbit="0deg 75deg 70%"
-                  exposure="0.7"
-                  background-color: rgb(197, 4, 4);
-                  >
-                  </model-viewer>
-                </div>
-              </div>
-            </div>
-            <div class ='row' >
-              <div class ='column'>
-                <a href='examples/4540/1.jpg'><img class='input-img view1' src='examples/4540/1.jpg'></img></a>
-              </div>
-              <div class ='column'>
-                <a href='examples/4540/2.jpg'><img class='input-img view2' src='examples/4540/2.jpg'></img></a>
-              </div>
-              <div class ='column'>
-                <div id="card">
-                  <!-- All you need to put beautiful, interactive 3D content on your site: -->
-                  <model-viewer src="examples/4540/pred.glb"
-                  shadow-intensity="1"
-                  camera-controls
-                  camera-orbit="0deg 75deg 70%"
-                  exposure="0.7"
-                  background-color: rgb(197, 4, 4);
-                  >
-                  </model-viewer>
-                </div>
-              </div>
-              <div class ='column'>
-                <div id="card">
-                  <!-- All you need to put beautiful, interactive 3D content on your site: -->
-                  <model-viewer src="examples/4540/gt.glb"
-                  shadow-intensity="1"
-                  camera-controls
-                  camera-orbit="0deg 75deg 70%"
-                  exposure="0.7"
-                  background-color: rgb(197, 4, 4);
-                  >
-                  </model-viewer>
-                </div>
-              </div>
-            </div>
-            <div class ='row' >
-              <div class ='column'>
-                <a href='examples/5806/1.jpg'><img class='input-img view1' src='examples/5806/1.jpg'></img></a>
-              </div>
-              <div class ='column'>
-                <a href='examples/5806/2.jpg'><img class='input-img view2' src='examples/5806/2.jpg'></img></a>
-              </div>
-              <div class ='column'>
-                <div id="card">
-                  <!-- All you need to put beautiful, interactive 3D content on your site: -->
-                  <model-viewer src="examples/5806/pred.glb"
-                  shadow-intensity="1"
-                  camera-controls
-                  camera-orbit="0deg 75deg 70%"
-                  exposure="0.7"
-                  background-color: rgb(197, 4, 4);
-                  >
-                  </model-viewer>
-                </div>
-              </div>
-              <div class ='column'>
-                <div id="card">
-                  <!-- All you need to put beautiful, interactive 3D content on your site: -->
-                  <model-viewer src="examples/5806/gt.glb"
-                  shadow-intensity="1"
-                  camera-controls
-                  camera-orbit="0deg 75deg 70%"
-                  exposure="0.7"
-                  background-color: rgb(197, 4, 4);
-                  >
-                  </model-viewer>
-                </div>
-              </div>
-            </div>
-            <div class ='row' >
-              <div class ='column'>
-                <a href='examples/4058/1.jpg'><img class='input-img view1' src='examples/4058/1.jpg'></img></a>
-              </div>
-              <div class ='column'>
-                <a href='examples/4058/2.jpg'><img class='input-img view2' src='examples/4058/2.jpg'></img></a>
-              </div>
-              <div class ='column'>
-                <div id="card">
-                  <!-- All you need to put beautiful, interactive 3D content on your site: -->
-                  <model-viewer src="examples/4058/pred.glb"
-                  shadow-intensity="1"
-                  camera-controls
-                  camera-orbit="0deg 75deg 70%"
-                  exposure="0.7"
-                  background-color: rgb(197, 4, 4);
-                  >
-                  </model-viewer>
-                </div>
-              </div>
-              <div class ='column'>
-                <div id="card">
-                  <!-- All you need to put beautiful, interactive 3D content on your site: -->
-                  <model-viewer src="examples/4058/gt.glb"
-                  shadow-intensity="1"
-                  camera-controls
-                  camera-orbit="0deg 75deg 70%"
-                  exposure="0.7"
-                  background-color: rgb(197, 4, 4);
-                  >
-                  </model-viewer>
-                </div>
-              </div>
-            </div>
-            <div class ='row' >
-              <div class ='column'>
-                <a href='examples/4843/1.jpg'><img class='input-img view1' src='examples/4843/1.jpg'></img></a>
-              </div>
-              <div class ='column'>
-                <a href='examples/4843/2.jpg'><img class='input-img view2' src='examples/4843/2.jpg'></img></a>
-              </div>
-              <div class ='column'>
-                <div id="card">
-                  <!-- All you need to put beautiful, interactive 3D content on your site: -->
-                  <model-viewer src="examples/4843/pred.glb"
-                  shadow-intensity="1"
-                  camera-controls
-                  camera-orbit="0deg 75deg 70%"
-                  exposure="0.7"
-                  background-color: rgb(197, 4, 4);
-                  >
-                  </model-viewer>
-                </div>
-              </div>
-              <div class ='column'>
-                <div id="card">
-                  <!-- All you need to put beautiful, interactive 3D content on your site: -->
-                  <model-viewer src="examples/4843/gt.glb"
-                  shadow-intensity="1"
-                  camera-controls
-                  camera-orbit="0deg 75deg 70%"
-                  exposure="0.7"
-                  background-color: rgb(197, 4, 4);
-                  >
-                  </model-viewer>
-                </div>
+            <div class ='column'>
+              <div id="card">
+                <!-- All you need to put beautiful, interactive 3D content on your site: -->
+                <model-viewer src="examples/4564/gt.glb"
+                shadow-intensity="1"
+                camera-controls
+                camera-orbit="0deg 75deg 70%"
+                exposure="0.7"
+                background-color: rgb(197, 4, 4);
+                >
+                </model-viewer>
               </div>
             </div>
           </div>
-        </center>
-      </tr>
-      <br>
-      <hr>
-    </table>
+          <div class ='row' >
+            <div class ='column'>
+              <a href='examples/1079/1.jpg'><img class='input-img view1' src='examples/1079/1.jpg'></img></a>
+            </div>
+            <div class ='column'>
+              <a href='examples/1079/2.jpg'><img class='input-img view2' src='examples/1079/2.jpg'></img></a>
+            </div>
+            <div class ='column'>
+              <div id="card">
+                <!-- All you need to put beautiful, interactive 3D content on your site: -->
+                <model-viewer src="examples/1079/pred.glb"
+                shadow-intensity="1"
+                camera-controls
+                camera-orbit="0deg 75deg 70%"
+                exposure="0.7"
+                background-color: rgb(197, 4, 4);
+                >
+                </model-viewer>
+              </div>
+            </div>
+            <div class ='column'>
+              <div id="card">
+                <!-- All you need to put beautiful, interactive 3D content on your site: -->
+                <model-viewer src="examples/1079/gt.glb"
+                shadow-intensity="1"
+                camera-controls
+                camera-orbit="0deg 75deg 70%"
+                exposure="0.7"
+                background-color: rgb(197, 4, 4);
+                >
+                </model-viewer>
+              </div>
+            </div>
+          </div>
+          <div class ='row' >
+            <div class ='column'>
+              <a href='examples/1419/1.jpg'><img class='input-img view1' src='examples/1419/1.jpg'></img></a>
+            </div>
+            <div class ='column'>
+              <a href='examples/1419/2.jpg'><img class='input-img view2' src='examples/1419/2.jpg'></img></a>
+            </div>
+            <div class ='column'>
+              <div id="card">
+                <!-- All you need to put beautiful, interactive 3D content on your site: -->
+                <model-viewer src="examples/1419/pred.glb"
+                shadow-intensity="1"
+                camera-controls
+                camera-orbit="0deg 75deg 70%"
+                exposure="0.7"
+                background-color: rgb(197, 4, 4);
+                >
+                </model-viewer>
+              </div>
+            </div>
+            <div class ='column'>
+              <div id="card">
+                <!-- All you need to put beautiful, interactive 3D content on your site: -->
+                <model-viewer src="examples/1419/gt.glb"
+                shadow-intensity="1"
+                camera-controls
+                camera-orbit="0deg 75deg 70%"
+                exposure="0.7"
+                background-color: rgb(197, 4, 4);
+                >
+                </model-viewer>
+              </div>
+            </div>
+          </div>
+          <div class ='row' >
+            <div class ='column'>
+              <a href='examples/2612/1.jpg'><img class='input-img view1' src='examples/2612/1.jpg'></img></a>
+            </div>
+            <div class ='column'>
+              <a href='examples/2612/2.jpg'><img class='input-img view2' src='examples/2612/2.jpg'></img></a>
+            </div>
+            <div class ='column'>
+              <div id="card">
+                <!-- All you need to put beautiful, interactive 3D content on your site: -->
+                <model-viewer src="examples/2612/pred.glb"
+                shadow-intensity="1"
+                camera-controls
+                camera-orbit="0deg 75deg 70%"
+                exposure="0.7"
+                background-color: rgb(197, 4, 4);
+                >
+                </model-viewer>
+              </div>
+            </div>
+            <div class ='column'>
+              <div id="card">
+                <!-- All you need to put beautiful, interactive 3D content on your site: -->
+                <model-viewer src="examples/2612/gt.glb"
+                shadow-intensity="1"
+                camera-controls
+                camera-orbit="0deg 75deg 70%"
+                exposure="0.7"
+                background-color: rgb(197, 4, 4);
+                >
+                </model-viewer>
+              </div>
+            </div>
+          </div>
+          <div class ='row' >
+            <div class ='column'>
+              <a href='examples/4194/1.jpg'><img class='input-img view1' src='examples/4194/1.jpg'></img></a>
+            </div>
+            <div class ='column'>
+              <a href='examples/4194/2.jpg'><img class='input-img view2' src='examples/4194/2.jpg'></img></a>
+            </div>
+            <div class ='column'>
+              <div id="card">
+                <!-- All you need to put beautiful, interactive 3D content on your site: -->
+                <model-viewer src="examples/4194/pred.glb"
+                shadow-intensity="1"
+                camera-controls
+                camera-orbit="0deg 75deg 70%"
+                exposure="0.7"
+                background-color: rgb(197, 4, 4);
+                >
+                </model-viewer>
+              </div>
+            </div>
+            <div class ='column'>
+              <div id="card">
+                <!-- All you need to put beautiful, interactive 3D content on your site: -->
+                <model-viewer src="examples/4194/gt.glb"
+                shadow-intensity="1"
+                camera-controls
+                camera-orbit="0deg 75deg 70%"
+                exposure="0.7"
+                background-color: rgb(197, 4, 4);
+                >
+                </model-viewer>
+              </div>
+            </div>
+          </div>
+          <div class ='row' >
+            <div class ='column'>
+              <a href='examples/4540/1.jpg'><img class='input-img view1' src='examples/4540/1.jpg'></img></a>
+            </div>
+            <div class ='column'>
+              <a href='examples/4540/2.jpg'><img class='input-img view2' src='examples/4540/2.jpg'></img></a>
+            </div>
+            <div class ='column'>
+              <div id="card">
+                <!-- All you need to put beautiful, interactive 3D content on your site: -->
+                <model-viewer src="examples/4540/pred.glb"
+                shadow-intensity="1"
+                camera-controls
+                camera-orbit="0deg 75deg 70%"
+                exposure="0.7"
+                background-color: rgb(197, 4, 4);
+                >
+                </model-viewer>
+              </div>
+            </div>
+            <div class ='column'>
+              <div id="card">
+                <!-- All you need to put beautiful, interactive 3D content on your site: -->
+                <model-viewer src="examples/4540/gt.glb"
+                shadow-intensity="1"
+                camera-controls
+                camera-orbit="0deg 75deg 70%"
+                exposure="0.7"
+                background-color: rgb(197, 4, 4);
+                >
+                </model-viewer>
+              </div>
+            </div>
+          </div>
+          <div class ='row' >
+            <div class ='column'>
+              <a href='examples/5806/1.jpg'><img class='input-img view1' src='examples/5806/1.jpg'></img></a>
+            </div>
+            <div class ='column'>
+              <a href='examples/5806/2.jpg'><img class='input-img view2' src='examples/5806/2.jpg'></img></a>
+            </div>
+            <div class ='column'>
+              <div id="card">
+                <!-- All you need to put beautiful, interactive 3D content on your site: -->
+                <model-viewer src="examples/5806/pred.glb"
+                shadow-intensity="1"
+                camera-controls
+                camera-orbit="0deg 75deg 70%"
+                exposure="0.7"
+                background-color: rgb(197, 4, 4);
+                >
+                </model-viewer>
+              </div>
+            </div>
+            <div class ='column'>
+              <div id="card">
+                <!-- All you need to put beautiful, interactive 3D content on your site: -->
+                <model-viewer src="examples/5806/gt.glb"
+                shadow-intensity="1"
+                camera-controls
+                camera-orbit="0deg 75deg 70%"
+                exposure="0.7"
+                background-color: rgb(197, 4, 4);
+                >
+                </model-viewer>
+              </div>
+            </div>
+          </div>
+          <div class ='row' >
+            <div class ='column'>
+              <a href='examples/4058/1.jpg'><img class='input-img view1' src='examples/4058/1.jpg'></img></a>
+            </div>
+            <div class ='column'>
+              <a href='examples/4058/2.jpg'><img class='input-img view2' src='examples/4058/2.jpg'></img></a>
+            </div>
+            <div class ='column'>
+              <div id="card">
+                <!-- All you need to put beautiful, interactive 3D content on your site: -->
+                <model-viewer src="examples/4058/pred.glb"
+                shadow-intensity="1"
+                camera-controls
+                camera-orbit="0deg 75deg 70%"
+                exposure="0.7"
+                background-color: rgb(197, 4, 4);
+                >
+                </model-viewer>
+              </div>
+            </div>
+            <div class ='column'>
+              <div id="card">
+                <!-- All you need to put beautiful, interactive 3D content on your site: -->
+                <model-viewer src="examples/4058/gt.glb"
+                shadow-intensity="1"
+                camera-controls
+                camera-orbit="0deg 75deg 70%"
+                exposure="0.7"
+                background-color: rgb(197, 4, 4);
+                >
+                </model-viewer>
+              </div>
+            </div>
+          </div>
+          <div class ='row' >
+            <div class ='column'>
+              <a href='examples/4843/1.jpg'><img class='input-img view1' src='examples/4843/1.jpg'></img></a>
+            </div>
+            <div class ='column'>
+              <a href='examples/4843/2.jpg'><img class='input-img view2' src='examples/4843/2.jpg'></img></a>
+            </div>
+            <div class ='column'>
+              <div id="card">
+                <!-- All you need to put beautiful, interactive 3D content on your site: -->
+                <model-viewer src="examples/4843/pred.glb"
+                shadow-intensity="1"
+                camera-controls
+                camera-orbit="0deg 75deg 70%"
+                exposure="0.7"
+                background-color: rgb(197, 4, 4);
+                >
+                </model-viewer>
+              </div>
+            </div>
+            <div class ='column'>
+              <div id="card">
+                <!-- All you need to put beautiful, interactive 3D content on your site: -->
+                <model-viewer src="examples/4843/gt.glb"
+                shadow-intensity="1"
+                camera-controls
+                camera-orbit="0deg 75deg 70%"
+                exposure="0.7"
+                background-color: rgb(197, 4, 4);
+                >
+                </model-viewer>
+              </div>
+            </div>
+          </div>
+        </div>
+      </center>
+    </tr>
+    <br>
+    <hr>
+  </table>
+
     <table align=center width=100%>
       <tr>
         <td>
@@ -480,11 +464,6 @@
         </td>
       </tr>
     </table>
-    <!-- Loads <model-viewer> for modern browsers: -->
-    <script type="module"
-      src="https://unpkg.com/@google/model-viewer@v0.9.0/dist/model-viewer.js"></script>
-    <!-- Loads <model-viewer> for old browsers like IE11: -->
-    <script nomodule
-      src="https://unpkg.com/@google/model-viewer@v0.9.0/dist/model-viewer-legacy.js"></script>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   </body>
 </html>

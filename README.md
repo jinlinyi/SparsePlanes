@@ -7,6 +7,8 @@ Linyi Jin, Shengyi Qian, Andrew Owens, David F. Fouhey
 <span style="font-size: 14pt; color: #555555">
 University of Michigan
 </span>
+</br>
+ICCV 2021 (Oral)
 </h4>
 <hr>
 
@@ -26,10 +28,8 @@ If you find this code useful, please consider citing:
 @inproceedings{jin2021planar,
       title={Planar Surface Reconstruction from Sparse Views}, 
       author={Linyi Jin and Shengyi Qian and Andrew Owens and David F. Fouhey},
-      year={2021},
-      eprint={2103.14644},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
+      booktitle = {ICCV},
+      year={2021}
 }
 ```
 

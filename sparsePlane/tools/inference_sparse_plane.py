@@ -740,13 +740,11 @@ def main():
         f = open(args.img_list)
         lines = f.readlines()
         f.close()
-        lines = lines[2:]  # drop the first two lines
         for line_idx, line in enumerate(tqdm(lines)):
             output_dir = os.path.join(args.output, "{:0>4}".format(line_idx))
             os.makedirs(output_dir, exist_ok=True)
             line = line.strip()
             splits = line.split(" ")
-            # import pdb; pdb.set_trace()
             im0 = os.path.join(args.input, splits[0])
             im1 = os.path.join(args.input, splits[1])
             inference_pair(output_dir, model, dis_opt, con_opt, im0, im1)

@@ -20,12 +20,12 @@ python tools/inference_sparse_plane.py \
 
 [1]: https://www.dropbox.com/s/wdwlm5zltze2zwg/model_ICCV.pth
 
-Or you can inference on a list of images by making a txt file
+Or you can inference on a list of image pairs by making a txt file
 ```
 cd sparsePlane
 python tools/inference_sparse_plane.py \
 --config-file ./tools/demo/config.yaml \
---input ./input_dir \
---img-list /path/to/img_list.txt \
+--input ./tools/demo/images \
+--img-list ./tools/demo/images/image_list.txt \
 --output ./debug
 ```

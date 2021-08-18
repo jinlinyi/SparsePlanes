@@ -1,0 +1,20 @@
+MODEL:
+  MASK_ON: True
+  DEPTH_ON: True
+  EMBEDDING_ON: True
+  CAMERA_ON: False
+  FREEZE: ['backbone', 'proposal_generator', 'roi_heads.box_head', 'roi_heads.box_predictor', 'roi_heads.mask_head', 'roi_heads.plane_head', 'depth_head']
+  WEIGHTS: "./models/step1_model_0036999.pth"
+SOLVER:
+  MAX_ITER: 80000
+  CHECKPOINT_PERIOD: 1000
+  IMS_PER_BATCH: 16
+DATASETS:
+  TRAIN: ("mp3d_train",)
+  TEST: ("mp3d_val",)
+TEST:
+  EVAL_PERIOD: 1000
+  EVAL_GT_BOX: True
+DATALOADER:
+  NUM_WORKERS: 4
+OUTPUT_DIR: "./debug/step2"

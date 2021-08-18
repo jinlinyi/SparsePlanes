@@ -1,0 +1,19 @@
+MODEL:
+  MASK_ON: True
+  DEPTH_ON: True
+  EMBEDDING_ON: False
+  CAMERA_ON: False
+  WEIGHTS: "detectron2://ImageNetPretrained/MSRA/R-50.pkl"
+SOLVER:
+  MAX_ITER: 80000
+  CHECKPOINT_PERIOD: 1000
+  IMS_PER_BATCH: 8
+DATASETS:
+  TRAIN: ("mp3d_train",)
+  TEST: ("mp3d_val",)
+TEST:
+  EVAL_PERIOD: 1000
+  EVAL_GT_BOX: False
+DATALOADER:
+  NUM_WORKERS: 4
+OUTPUT_DIR: "./debug/step1"

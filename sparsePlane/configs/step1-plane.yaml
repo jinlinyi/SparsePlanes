@@ -3,7 +3,7 @@ MODEL:
   DEPTH_ON: True
   EMBEDDING_ON: False
   CAMERA_ON: False
-  WEIGHTS: "detectron2://ImageNetPretrained/MSRA/R-50.pkl"
+  WEIGHTS: "detectron2://COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl"
 SOLVER:
   MAX_ITER: 80000
   CHECKPOINT_PERIOD: 1000

@@ -1,12 +1,35 @@
 Data
 ===========
-We store our data in [Dropbox][1].
+
+
+
+Preprocessed Data
+------------------
+<table><tbody>
+<!-- START TABLE -->
+<!-- TABLE HEADER -->
+<th valign="bottom">Name</th>
+<th valign="bottom">Size</th>
+<th valign="bottom">Details</th>
+<tr>
+<!-- TABLE BODY -->
+<td align="left"><a href="https://fouheylab.eecs.umich.edu/~jinlinyi/2021/sparsePlanesICCV21/data/rgb.zip">rgb.zip</a></td>
+<td align="left">21 GB</td>
+<td align="left">Habitat generated images.</td>
+</tr>
+
+ <tr><td align="left"><a href="https://fouheylab.eecs.umich.edu/~jinlinyi/2021/sparsePlanesICCV21/data/observations.zip">observations.zip</a></a></td>
+<td align="left">64 GB</td>
+<td align="left">Depth and semantic labels.</td>
+</tr>
+
+</tbody></table>
 
 
 Dataset Json Files
 ------------------
 We write a custom dataloader in Detectron2 and it loads jsons that contain the dataset information.
-`$DROPBOX_FOLDER/mp3d_planercnn_json/` contains jsons for `train/val/test` split. Each json file stores images pairs and their annotations.
+[mp3d_planercnn_json.zip][split] (160 MB) contains jsons for `train/val/test` split. Each json file stores images pairs and their annotations.
 ```yaml
 # json file data structure
 "info": "...",
@@ -47,9 +70,4 @@ We write a custom dataloader in Detectron2 and it loads jsons that contain the d
 ]
 ```
 
-Preprocessed Data
-------------------
-`$DROPBOX_FOLDER/data/` contains all the preprocessed data. You need to unzip `rgb.zip` and `observations.zip` if you want to re-train the network.
-
-
-[1]: https://www.dropbox.com/sh/bfafx8vz5pmy196/AADU1qZmjbuZzEiNzeqGmBala
+[split]: https://fouheylab.eecs.umich.edu/~jinlinyi/2021/sparsePlanesICCV21/split/mp3d_planercnn_json.zip

@@ -14,6 +14,12 @@ Preprocessed Data
 <th valign="bottom">Required for training?</th>
 <tr>
 <!-- TABLE BODY -->
+<td align="left"><a href="https://fouheylab.eecs.umich.edu/~jinlinyi/2021/sparsePlanesICCV21/split/mp3d_planercnn_json.zip">mp3d_planercnn_json.zip</a></td>
+<td align="left">160 MB</td>
+<td align="left">Jsons that contain the dataset information.</td>
+<td align="center">Yes</td>
+</tr>
+
 <td align="left"><a href="https://fouheylab.eecs.umich.edu/~jinlinyi/2021/sparsePlanesICCV21/data/rgb.zip">rgb.zip</a></td>
 <td align="left">21 GB</td>
 <td align="left">Habitat generated images.</td>
@@ -44,7 +50,7 @@ Preprocessed Data
 Dataset Json Files
 ------------------
 We write a custom dataloader in Detectron2 and it loads jsons that contain the dataset information.
-[mp3d_planercnn_json.zip][split] (160 MB) contains jsons for `train/val/test` split. Each json file stores images pairs and their annotations.
+[mp3d_planercnn_json.zip][split] contains jsons for `train/val/test` split. Each json file stores images pairs and their annotations.
 ```yaml
 # json file data structure
 "info": "...",

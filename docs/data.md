@@ -1,6 +1,6 @@
 Data
 ===========
-
+Please refer to the [README][readme] in foler `data_preparation/` for details about how we preprocess data.
 
 
 Preprocessed Data
@@ -11,16 +11,31 @@ Preprocessed Data
 <th valign="bottom">Name</th>
 <th valign="bottom">Size</th>
 <th valign="bottom">Details</th>
+<th valign="bottom">Required for training?</th>
 <tr>
 <!-- TABLE BODY -->
 <td align="left"><a href="https://fouheylab.eecs.umich.edu/~jinlinyi/2021/sparsePlanesICCV21/data/rgb.zip">rgb.zip</a></td>
 <td align="left">21 GB</td>
 <td align="left">Habitat generated images.</td>
+<td align="center">Yes</td>
 </tr>
 
  <tr><td align="left"><a href="https://fouheylab.eecs.umich.edu/~jinlinyi/2021/sparsePlanesICCV21/data/observations.zip">observations.zip</a></a></td>
 <td align="left">64 GB</td>
 <td align="left">Depth and semantic labels.</td>
+<td align="center">Yes</td>
+</tr>
+
+ <tr><td align="left"><a href="https://fouheylab.eecs.umich.edu/~jinlinyi/2021/sparsePlanesICCV21/data/planes_ply_mp3dcoord_refined.zip">planes_ply_mp3dcoord_refined.zip</a></a></td>
+<td align="left">28 GB</td>
+<td align="left">Plane annotations.</td>
+<td align="center">No</td>
+</tr>
+
+ <tr><td align="left"><a href="https://fouheylab.eecs.umich.edu/~jinlinyi/2021/sparsePlanesICCV21/data/cameras.zip">cameras.zip</a></a></td>
+<td align="left">4.4 MB</td>
+<td align="left">Camera poses.</td>
+<td align="center">No</td>
 </tr>
 
 </tbody></table>
@@ -69,5 +84,5 @@ We write a custom dataloader in Detectron2 and it loads jsons that contain the d
     ...
 ]
 ```
-
+[readme]: ../data_preparation/README.md
 [split]: https://fouheylab.eecs.umich.edu/~jinlinyi/2021/sparsePlanesICCV21/split/mp3d_planercnn_json.zip

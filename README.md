@@ -26,7 +26,7 @@ Usage Instructions
 2. [How to inference the code on a pair of images?][3]
 3. [How to process the dataset?][4]
 4. [How to train your model?][5]
-5. [How to evaluate your model? (TODO)][6]
+5. [How to evaluate your model?][6]
 
 
 Citation

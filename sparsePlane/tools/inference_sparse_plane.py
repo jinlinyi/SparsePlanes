@@ -209,9 +209,14 @@ class Camera_Branch:
         ]
         sorted_idx_rot = np.argsort(pred_dict["camera"]["logits"]["rot"].numpy())[::-1]
         tran = self.class2xyz(sorted_idx_tran[tran_topk])
-        tran_p = pred_dict["camera"]["logits_sms"]["tran"][sorted_idx_tran[tran_topk]]
         rot = self.class2quat(sorted_idx_rot[rot_topk])
-        rot_p = pred_dict["camera"]["logits_sms"]["rot"][sorted_idx_rot[rot_topk]]
+        if "logits_sms" in pred_dict["camera"].keys():
+            tran_p = pred_dict["camera"]["logits_sms"]["tran"][sorted_idx_tran[tran_topk]]
+            rot_p = pred_dict["camera"]["logits_sms"]["rot"][sorted_idx_rot[rot_topk]]
+        else:
+            tran_p = softmax(pred_dict["camera"]['logits']["tran"])[sorted_idx_tran[tran_topk]]
+            rot_p = softmax(pred_dict["camera"]['logits']["rot"])[sorted_idx_rot[rot_topk]]
+
         camera_info = {
             "position": tran,
             "position_prob": tran_p,

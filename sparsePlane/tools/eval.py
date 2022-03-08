@@ -99,10 +99,12 @@ class Evaluator:
         self.load_input_dataset(dataset)
         self.dis_opt = Discrete_Optimizer(cfg)
         self.con_opt = Continuous_Optimizer()
-        self.sanity_check()
+        # self.sanity_check()
 
     def sanity_check(self):
         for idx, key in enumerate(self.dataset_dict.keys()):
+            if not self.rcnnidx2datasetkey(idx) == key:
+                import pdb;pdb.set_trace()
             assert self.rcnnidx2datasetkey(idx) == key
 
     def rcnnidx2datasetkey(self, idx):
@@ -648,7 +650,7 @@ class Evaluator:
         optimized_dict = self.dis_opt.optimize(self.rcnn_data[idx])
         if evaluate == "correspondence":
             return optimized_dict
-        elif method in ["AP", "camera"]:
+        elif evaluate in ["AP", "camera"]:
             im0 = self.rcnn_data[idx]["0"]["file_name"]
             im1 = self.rcnn_data[idx]["1"]["file_name"]
             optimized_dict = self.con_opt.optimize(
@@ -913,6 +915,7 @@ def main(args):
             ev, args.num_process, np.arange(len(ev.rcnn_data)), args.evaluate, True
         )
     # save_dict(optimized_dict, './results/gtbox', 'discrete')
+        save_dict(optimized_dict, os.path.dirname(args.optimized_dict_path), os.path.basename(args.optimized_dict_path).split('.')[0])
 
     if args.evaluate == "AP":
         ev.optimized_dict = optimized_dict

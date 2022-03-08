@@ -345,13 +345,17 @@ def get_camera_meshes(camera_list, radius=0.02):
     lookat = np.array([0, 0, -1])
     vertical = np.array([0, 1, 0])
 
-    positions = np.array([camera_info["position"] for camera_info in camera_list])
+    positions = np.array([camera_info["position"].flatten() for camera_info in camera_list])
     lookats = rots @ lookat.T
     verticals = rots @ vertical.T
     predetermined_color = [
         [0.10196, 0.32157, 1.0],
         [1.0, 0.0667, 0.1490],
-    ]
+        [197/255, 181/255, 24/255],
+        [73/255, 145/255, 115/255],
+        [198/255, 120/255, 221/255],
+    ][:len(camera_list)]
+    assert len(predetermined_color) == len(camera_list)
     for idx, (position, lookat, vertical, color) in enumerate(
         zip(positions, lookats, verticals, predetermined_color)
     ):

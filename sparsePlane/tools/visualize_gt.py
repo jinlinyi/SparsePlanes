@@ -8,6 +8,7 @@ import shutil
 import pickle
 import matplotlib.pyplot as plt
 import seaborn as sns
+import quaternion
 from collections import defaultdict
 import cv2
 from tqdm import tqdm
@@ -71,9 +72,18 @@ if __name__ == "__main__":
             house_name, basename = dic[str(i)]["image_id"].split('_', 1)
             img_file = os.path.join(args.rgb_path, house_name, basename+'.png')
             img = cv2.imread(img_file, cv2.IMREAD_COLOR)[:,:,::-1]
-            cameras_dict = get_camera_dicts(os.path.join(args.camera_path, house_name+'.pkl'))
-            vis = Visualizer(img, metadata)
-            seg_gt = vis.draw_dataset_dict(dic[str(i)]).get_image()
+            # cameras_dict = get_camera_dicts(os.path.join(args.camera_path, house_name+'.pkl'))
+            
+            if i == 0:
+                camera_info = {
+                    "position": np.array(dic['rel_pose']["position"]),
+                    "rotation": quaternion.from_float_array(dic['rel_pose']["rotation"]),
+                }
+            else:
+                camera_info = {
+                    "position": np.array([0, 0, 0]),
+                    "rotation": np.quaternion(1, 0, 0, 0),
+                }
             plane_params = [ann['plane'] for ann in dic[str(i)]['annotations']]
             segmentations = [ann['segmentation'] for ann in dic[str(i)]['annotations']]
             if args.save_obj:
@@ -87,9 +97,9 @@ if __name__ == "__main__":
                 )
                 uv_maps.extend(uv_map)
                 
-                gt_meshes = transform_meshes(gt_meshes, cameras_dict[basename])
+                gt_meshes = transform_meshes(gt_meshes, camera_info)
                 meshes_list.append(gt_meshes)
-                cam_list.append(cameras_dict[basename])
+                cam_list.append(camera_info)
         
         joint_mesh = join_meshes_as_batch(meshes_list)
         cam_meshes = get_camera_meshes(cam_list)

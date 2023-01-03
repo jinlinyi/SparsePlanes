@@ -14,37 +14,38 @@ Preprocessed Data
 <th valign="bottom">Required for training?</th>
 <tr>
 <!-- TABLE BODY -->
-<td align="left"><a href="https://fouheylab.eecs.umich.edu/~jinlinyi/2021/sparsePlanesICCV21/split/mp3d_planercnn_json.zip">mp3d_planercnn_json.zip</a></td>
+<td align="left"><a href="https://www.dropbox.com/s/uqkcaaoayd0me8e/mp3d_planercnn_json.zip">mp3d_planercnn_json.zip</a></td>
 <td align="left">160 MB</td>
 <td align="left">Jsons that contain the dataset information.</td>
 <td align="center">Yes</td>
 </tr>
 
-<td align="left"><a href="https://fouheylab.eecs.umich.edu/~jinlinyi/2021/sparsePlanesICCV21/data/rgb.zip">rgb.zip</a></td>
+<td align="left"><a href="https://www.dropbox.com/s/po09x0aovog9oe1/rgb.zip">rgb.zip</a></td>
 <td align="left">21 GB</td>
 <td align="left">Habitat generated images.</td>
 <td align="center">Yes</td>
 </tr>
 
- <tr><td align="left"><a href="https://fouheylab.eecs.umich.edu/~jinlinyi/2021/sparsePlanesICCV21/data/observations.zip">observations.zip</a></a></td>
+ <tr><td align="left"><a href="https://www.dropbox.com/s/otea8zdyadmxj15/observations.zip">observations.zip</a></a></td>
 <td align="left">64 GB</td>
 <td align="left">Depth and semantic labels.</td>
 <td align="center">Yes</td>
 </tr>
 
- <tr><td align="left"><a href="https://fouheylab.eecs.umich.edu/~jinlinyi/2021/sparsePlanesICCV21/data/planes_ply_mp3dcoord_refined.zip">planes_ply_mp3dcoord_refined.zip</a></a></td>
+ <tr><td align="left"><a href="https://www.dropbox.com/s/84ulrsk47b72nfv/planes_ply_mp3dcoord_refined.zip">planes_ply_mp3dcoord_refined.zip</a></a></td>
 <td align="left">28 GB</td>
 <td align="left">Plane annotations.</td>
 <td align="center">No</td>
 </tr>
 
- <tr><td align="left"><a href="https://fouheylab.eecs.umich.edu/~jinlinyi/2021/sparsePlanesICCV21/data/cameras.zip">cameras.zip</a></a></td>
+ <tr><td align="left"><a href="https://www.dropbox.com/s/ul1v2vrlzl4voxj/cameras.zip">cameras.zip</a></a></td>
 <td align="left">4.4 MB</td>
 <td align="left">Camera poses.</td>
 <td align="center">No</td>
 </tr>
 
 </tbody></table>
+
 
 
 Dataset Json Files

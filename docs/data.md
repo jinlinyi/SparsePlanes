@@ -32,6 +32,12 @@ Preprocessed Data
 <td align="center">Yes</td>
 </tr>
 
+ <tr><td align="left"><a href="https://www.dropbox.com/s/1cutwfqhsx30joh/id2semantic.zip">id2semantic.zip</a></a></td>
+<td align="left">728 KB</td>
+<td align="left">Instance id to semantic name.</td>
+<td align="center">No</td>
+</tr>
+
  <tr><td align="left"><a href="https://www.dropbox.com/s/84ulrsk47b72nfv/planes_ply_mp3dcoord_refined.zip">planes_ply_mp3dcoord_refined.zip</a></a></td>
 <td align="left">28 GB</td>
 <td align="left">Plane annotations.</td>

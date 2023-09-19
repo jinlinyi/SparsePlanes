@@ -51,7 +51,7 @@ Preprocessed Data
 </tr>
 
 </tbody></table>
-
+If the above Dropbox link does not work, alternatively, you can download from <a href="https://drive.google.com/drive/folders/1wfsQa7AQbZzAN3D0VbLODDX8MPtRJvuC?usp=sharing">Google Drive</a>.
 
 
 Dataset Json Files

@@ -154,7 +154,7 @@ def get_single_image_mesh_plane(
         # fit, then adjust
         H = cv2.getPerspectiveTransform(control3DProject.astype(np.float32), fakePoints)
         # this maps the control points to the square; now make sure the full mask warps in
-        P = cv2.perspectiveTransform(tmp_verts.reshape(1, -1, 2), H)[0, :, :]
+        P = cv2.perspectiveTransform(tmp_verts.astype(np.float32).reshape(1, -1, 2), H)[0, :, :]
         xTrans, yTrans = P[:, 0].min(), P[:, 1].min()
         maxScale = max(P[:, 0].max() - P[:, 0].min(), P[:, 1].max() - P[:, 1].min())
         HShuffle = np.array(
@@ -174,7 +174,6 @@ def get_single_image_mesh_plane(
         verts_3d = []
         faces = []
         uvs = []
-
         for ring in segm:
             verts = np.array(ring).reshape(-1, 2)
             # get 3d pointcloud

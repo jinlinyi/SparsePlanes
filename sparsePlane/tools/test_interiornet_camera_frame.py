@@ -52,13 +52,7 @@ def save_pair_objects(
     webvis=False,
 ):
     """
-    if tran_topk == -2 and rot_topk == -2, then pred_camera should not be None, this is used for non-binned camera.
-    if exclude is not None, exclude some instances to make fig 2.
-    idx=7867
-    exclude = {
-        '0': [2,3,4,5,6,7],
-        '1': [0,1,2,4,5,6,7],
-    }
+    save predictions on image pair as obj file
     """
     image_paths = {"0": img_file1, "1": img_file2}
     meshes_list = []
@@ -282,7 +276,8 @@ def main(inv_R_on=False, rot_x=0, rot_y=0, rot_z=0):
         'position': T,
         'rotation': quaternion.as_float_array(quaternion.from_rotation_matrix(R)),
     }
-    # find sift correspondences
+    # find sift correspondences, 
+    # rays originated from these corresponding points from two views should align
     sift = cv2.SIFT_create(contrastThreshold=0.01, sigma=0.8)
     (kp1, des1) = sift.detectAndCompute(imgs[0], np.ones_like(imgs[0])[...,0])
     (kp2, des2) = sift.detectAndCompute(imgs[1], np.ones_like(imgs[1])[...,0])
@@ -292,7 +287,6 @@ def main(inv_R_on=False, rot_x=0, rot_y=0, rot_z=0):
     new_img = draw_matches(imgs[0], kp1, imgs[1], kp2, good)
     cv2.imwrite("debug/match.jpg", new_img)
     # visualize rays in 3D. 
-
     p_instances = {}
 
     src_pts = np.array([ kp1[m.queryIdx].pt for m in good ]).astype('int32')
@@ -309,7 +303,7 @@ def main(inv_R_on=False, rot_x=0, rot_y=0, rot_z=0):
         img_file2,
         256,
         256,
-        256 / 2 / np.tan(np.radians(90 / 2)),
+        256 / 2 / np.tan(np.radians(90 / 2)), # Interiornet image has 90 deg fov.
         p_instances,
         './debug',
         prefix=f'{inv_R_on}_{rot_x}_{rot_y}_{rot_z}',
@@ -318,6 +312,10 @@ def main(inv_R_on=False, rot_x=0, rot_y=0, rot_z=0):
 
 
 if __name__=='__main__':
+    """
+    Figuring out coordinate frame transformation from two dataset given just a rotation matrix is painful.
+    We enumerate different possible transformations, and visualize the alignment.
+    """
     # main(False, 0, 2, -3)
     main(True, 0, 2, 3)
     # for i in np.arange(-3, 4):

@@ -552,6 +552,9 @@ def merge_plane_params_from_global_params(param1, param2, corr_list):
 def save_pair_objects(
     img_file1,
     img_file2,
+    height, 
+    width,
+    focal_length,
     p_instances,
     output_dir,
     prefix="",
@@ -562,13 +565,7 @@ def save_pair_objects(
     webvis=False,
 ):
     """
-    if tran_topk == -2 and rot_topk == -2, then pred_camera should not be None, this is used for non-binned camera.
-    if exclude is not None, exclude some instances to make fig 2.
-    idx=7867
-    exclude = {
-        '0': [2,3,4,5,6,7],
-        '1': [0,1,2,4,5,6,7],
-    }
+    save predictions on image pair as obj file
     """
     image_paths = {"0": img_file1, "1": img_file2}
     meshes_list = []
@@ -610,8 +607,9 @@ def save_pair_objects(
             plane_params,
             segmentations,
             img_file=image_paths[str(i)],
-            height=480,
-            width=640,
+            height=height,
+            width=width,
+            focal_length=focal_length,
             webvis=False,
         )
         uv_maps.extend(uv_map)
@@ -717,6 +715,9 @@ def inference_pair(output_dir, model, dis_opt, con_opt, im0, im1):
     save_pair_objects(
         os.path.join(output_dir, "view0.jpg"),
         os.path.join(output_dir, "view1.jpg"),
+        480,
+        640,
+        517.97,
         p_instances,
         os.path.join(output_dir),
         prefix="refined",

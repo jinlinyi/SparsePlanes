@@ -129,7 +129,7 @@ def get_single_image_mesh_plane(
         tmp_verts = np.array(tmp_verts).reshape(-1, 2)
         # pick an arbitrary point
         # get 3d pointcloud
-        tmp_pcd = get_pcd(tmp_verts, normal, offset, focal_length)
+        tmp_pcd = get_pcd(tmp_verts, normal, offset, height, width, focal_length)
         point0 = tmp_pcd[0, :]
         # pick the furthest point from here
         dPoint0 = np.sum((tmp_pcd - point0[np.newaxis, :]) ** 2, axis=1)
@@ -143,7 +143,7 @@ def get_single_image_mesh_plane(
         # control points in 3D
         control3D = [point0, point0 + dir1, point0 + dir2, point0 + dir1 + dir2]
         control3D = np.vstack([p[None, :] for p in control3D])
-        control3DProject = project2D(control3D, focal_length)
+        control3DProject = project2D(control3D, height, width, focal_length)
 
         # pick an arbitrary square
         targetSize = 300
@@ -177,7 +177,7 @@ def get_single_image_mesh_plane(
         for ring in segm:
             verts = np.array(ring).reshape(-1, 2)
             # get 3d pointcloud
-            pcd = get_pcd(verts, normal, offset, focal_length)
+            pcd = get_pcd(verts, normal, offset, height, width, focal_length)
 
             if webvis:
                 # Rotate by 11 degree around x axis to push things on the ground.
@@ -264,7 +264,7 @@ def get_single_image_mesh(
             for ring in segm:
                 verts = np.array(ring).reshape(-1, 2)
                 # get 3d pointcloud
-                pcd = get_pcd(verts, normal, offset, focal_length)
+                pcd = get_pcd(verts, normal, offset, height, width, focal_length)
                 if webvis:
                     # Rotate by 11 degree around x axis to push things on the ground.
                     pcd = (
@@ -300,7 +300,7 @@ def get_single_image_mesh(
             for idx, vert in enumerate(verts):
                 vert_id_map[vert[0]][vert[1]] = idx + len(verts_3d)
 
-            verts_3d = get_pcd(verts[:, ::-1], normal, offset)
+            verts_3d = get_pcd(verts[:, ::-1], normal, offset, height, width, focal_length)
             if webvis:
                 # Rotate by 11 degree around x axis to push things on the ground.
                 verts_3d = (
@@ -366,7 +366,7 @@ def get_single_image_mesh(
     return meshes, img_files
 
 
-def get_single_image_pcd(plane_params, segmentations, height=480, width=640):
+def get_single_image_pcd(plane_params, segmentations, height=480, width=640, focal_length=517.97):
     plane_params = np.array(plane_params)
     offsets = np.maximum(np.linalg.norm(plane_params, ord=2, axis=1), 1e-5)
     norms = plane_params / offsets.reshape(-1, 1)
@@ -384,13 +384,13 @@ def get_single_image_pcd(plane_params, segmentations, height=480, width=640):
         verts_3d = []
         bitmask = polygons_to_bitmask(segm, height=height, width=width)
         verts = np.transpose(bitmask.nonzero())
-        verts_3d = get_pcd(verts[:, ::-1], normal, offset)
+        verts_3d = get_pcd(verts[:, ::-1], normal, offset, height, width, focal_length)
         verts_list.append(torch.tensor(verts_3d, dtype=torch.float32))
     return verts_list
 
 
 def get_single_image_mesh_depth(
-    depth, segmentations, img_file, height=480, width=640, webvis=True
+    depth, segmentations, img_file, height=480, width=640, focal_length=517.97, webvis=True
 ):
     if type(segmentations[0]) == dict:
         poly_segmentations = rle2polygon(segmentations)
@@ -413,7 +413,7 @@ def get_single_image_mesh_depth(
         vert_id_map = defaultdict(dict)
         for idx, vert in enumerate(verts):
             vert_id_map[vert[0]][vert[1]] = idx + len(verts_3d)
-        pcd = get_pcd_depth(verts[:, ::-1], depth.T)
+        pcd = get_pcd_depth(verts[:, ::-1], depth.T, height, width, focal_length)
         if webvis:
             # Rotate by 11 degree around x axis to push things on the ground.
             pcd = (

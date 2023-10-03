@@ -205,18 +205,43 @@ def get_match(img1, kp1, des1, img2, kp2, des2):
 def main(inv_R_on=False, rot_x=0, rot_y=0, rot_z=0):
     # read in two images.
     img_root = 'tools/images/interior_00'
-    img_file1 = osp.join(img_root, 'r_0.png')
-    img_file2 = osp.join(img_root, 'r_1.png')
+    if 1:
+        img_file1 = osp.join(img_root, 'r_0.png')
+        img_file2 = osp.join(img_root, 'r_1.png')
+        R = np.array([
+            [ 0.9750,  0.0138, -0.2219],
+            [ 0.1013,  0.8607,  0.4989],
+            [ 0.1979, -0.5089,  0.8378],
+        ])
+    if 0:
+        R = [
+            [ 0.9953,  0.0216, -0.0949],
+            [-0.0055,  0.9859,  0.1673],
+            [ 0.0972, -0.1660,  0.9813]
+        ]
+        img_file1 = osp.join(img_root, 'r1_0.png')
+        img_file2 = osp.join(img_root, 'r1_1.png')
+    if 0:
+        R = [
+            [ 0.7416,  0.0056, -0.6709],
+            [ 0.0109,  0.9997,  0.0203],
+            [ 0.6708, -0.0224,  0.7413]
+        ]
+        img_file1 = osp.join(img_root, 'r2_0.png')
+        img_file2 = osp.join(img_root, 'r2_1.png')
+    if 0:
+        R = [
+            [ 0.9950,  0.0610,  0.0792],
+            [-0.0413,  0.9725, -0.2293],
+            [-0.0910,  0.2249,  0.9701]
+        ]
+        img_file1 = osp.join(img_root, 'r3_0.png')
+        img_file2 = osp.join(img_root, 'r3_1.png')
+    T = np.array([0,0,0])
     imgs = [
         cv2.imread(img_file1),
         cv2.imread(img_file2),
     ]
-    R = np.array([
-        [ 0.9750,  0.0138, -0.2219],
-        [ 0.1013,  0.8607,  0.4989],
-        [ 0.1979, -0.5089,  0.8378],
-    ])
-    T = np.array([0,0,0])
     """
     begin transformation
     """
@@ -262,9 +287,11 @@ def main(inv_R_on=False, rot_x=0, rot_y=0, rot_z=0):
         mapping = mapping @ rot_m
 
     if inv_R_on:
-        R = mapping.T @ R @ mapping
-    else:
         R = mapping.T @ R.T @ mapping
+    else:
+        R = mapping.T @ R @ mapping
+
+    # R = np.eye(3)
     print(mapping)
     # R = np.eye(3)
     """
@@ -306,7 +333,7 @@ def main(inv_R_on=False, rot_x=0, rot_y=0, rot_z=0):
         256 / 2 / np.tan(np.radians(90 / 2)), # Interiornet image has 90 deg fov.
         p_instances,
         './debug',
-        prefix=f'{inv_R_on}_{rot_x}_{rot_y}_{rot_z}',
+        prefix=f"{osp.basename(img_file1).split('.')[0]}_{osp.basename(img_file2).split('.')[0]}_{inv_R_on}_{rot_x}_{rot_y}_{rot_z}",
         pred_camera=camera_info,
     )
 
@@ -317,7 +344,7 @@ if __name__=='__main__':
     We enumerate different possible transformations, and visualize the alignment.
     """
     # main(False, 0, 2, -3)
-    main(True, 0, 2, 3)
+    main(False, 0, 2, 3)
     # for i in np.arange(-3, 4):
     #     main(True, i, 0, 0)
     #     main(False, i, 0, 0)
